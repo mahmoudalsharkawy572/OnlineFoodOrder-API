@@ -82,3 +82,67 @@ It is designed to serve as the backend for any food ordering platform — whethe
 - **Dependency Injection**: Built-in ASP.NET Core DI container
 
 ---
+
+## 📁 Project Structure
+
+```
+OnlineFoodOrder-API/
+│
+├── 💾 Core/
+│   ├── 📊 DomainLayer/ — Entity models, interfaces, and exceptions
+│   │   ├── 📝 Contracts/ — Repository interfaces (IGenericRepository, IUnitOfWork, ISpecifications)
+│   │   ├── ⚠️ Exceptions/ — Custom exceptions (NotFoundException, ValidationException, UnAuthorizedException)
+│   │   └── 🏗️ Models/ — Domain entities (Product, Order, Basket, Identity models)
+│   │
+│   ├── 🔧 Service/ — Business logic implementation
+│   │   ├── 🗺️ MappingProfiles/ — AutoMapper profiles for DTOs
+│   │   ├── 🔍 Specifications/ — Query specifications for filtering/sorting
+│   │   ├── 🔐 AuthenticationService.cs — User registration, login, JWT token generation
+│   │   ├── 🛒 BasketService.cs — Add/remove items from basket
+│   │   ├── 📦 OrderService.cs — Create and manage orders
+│   │   ├── 💳 PaymentService.cs — Stripe payment integration
+│   │   ├── 🍽️ ProductService.cs — Product catalog operations
+│   │   └── 🔌 ServiceManager.cs — Facade pattern for service coordination
+│   │
+│   └── 📑 ServiceAbstraction/ — Service interfaces
+│       ├── 🔐 IAuthenticationService.cs
+│       ├── 🛒 IBasketService.cs
+│       ├── 📦 IOrderService.cs
+│       ├── 💳 IPaymentService.cs
+│       ├── 🍽️ IProductService.cs
+│       └── 🔌 IServiceManager.cs
+│
+├── 🏢 Infrastructre/
+│   ├── 💾 Persistence/ — Data access layer
+│   │   ├── 🗄️ Data/ — DbContext and Entity Framework configuration
+│   │   ├── 👤 Identity/ — ASP.NET Core Identity setup and user management
+│   │   ├── 🔄 Repositories/ — Repository pattern implementations
+│   │   ├── 🌱 DataSeeding.cs — Initial database seed data
+│   │   └── 📊 SpecificationEvaluator.cs — Applies specifications to queries
+│   │
+│   └── 🎨 Presentation/ — API layer
+│       └── 🎛️ Controllers/ — API endpoints for Account, Basket, Order, Products, Payments
+│
+├── 📦 Shared/ — Shared models and utilities
+│   ├── 💬 DataTransferObjects/ — DTOs for request/response
+│   ├── ❌ ErrorModels/ — Error response models
+│   ├── 📮 OrderModels/ — Order-related DTOs
+│   ├── 🔐 JwtOptions.cs — JWT configuration
+│   ├── 📄 PaginatedResult.cs — Generic pagination wrapper
+│   ├── 🔎 ProductQueryParams.cs — Product filtering parameters
+│   └── 📊 ProductSortingOptions.cs — Sorting options for products
+│
+├── 🌐 E-commerce.Web/ — Main API project
+│   ├── 🛠️ CustomMiddleWares/ — Custom middleware (error handling, logging)
+│   ├── ⚡ Extensions/ — Extension methods for service registration
+│   ├── 🏭 Factories/ — Factory pattern implementations
+│   ├── 🔧 Properties/ — Project settings and configurations
+│   ├── 🌍 wwwroot/ — Static files
+│   └── ⚙️ Program.cs — Application startup configuration
+│
+├── 📋 E-commerce.Web.sln — Solution file
+├── 📖 README.md — Project documentation
+└── 🚫 .gitignore — Git ignore rules
+```
+
+---
