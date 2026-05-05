@@ -60,3 +60,24 @@ It is designed to serve as the backend for any food ordering platform — whethe
 | GET | `/api/Products/{id}` | Get product by ID |
 | GET | `/api/Products/Brands` | Get all brands |
 | GET | `/api/Products/Types` | Get all types |
+
+
+## 🛠️ Technologies Used
+
+### Backend
+| Technology | Details |
+|------------|---------|
+| **Framework** | ASP.NET Core 9 Web API |
+| **Database** | SQL Server |
+| **Cache / In-Memory DB** | Redis |
+| **Authentication** | ASP.NET Core Identity |
+| **Architecture** | Onion Architecture |
+| **Design Patterns** | Repository Pattern, Unit of Work, Specification Pattern |
+
+### External Services
+- **Payment**: Stripe API
+
+### Development Tools
+- **ORM**: Entity Framework Core
+- **Database Migrations**: Code-First approach
+- **Dependency Injection**: Built-in ASP.NET Core DI container
